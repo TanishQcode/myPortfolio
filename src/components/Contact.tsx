@@ -34,7 +34,11 @@ export default function Contact() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), email: email.trim(), message: message.trim() }),
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
+        }),
       });
 
       const data = await res.json();
@@ -49,7 +53,9 @@ export default function Contact() {
       setMessage("");
     } catch (err: unknown) {
       setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "Failed to send message.");
+      setErrorMsg(
+        err instanceof Error ? err.message : "Failed to send message.",
+      );
     }
   }
 
@@ -62,15 +68,27 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-sm md:text-md text-cyan-400 font-mono mb-4 tracking-widest uppercase">05. What&apos;s Next?</h2>
+          <h2 className="text-sm md:text-md text-cyan-400 font-mono mb-4 tracking-widest uppercase">
+            05. What&apos;s Next?
+          </h2>
           <h3 className="text-4xl md:text-6xl font-bold mb-6">Get In Touch</h3>
           <p className="text-gray-400 max-w-xl mx-auto mb-12 text-lg">
-            I am always open to discussing new projects, creative ideas or opportunities to be part of your visions. Let&apos;s build something amazing together.
+            I am always open to discussing new projects, creative ideas or
+            opportunities to be part of your visions. Let&apos;s build something
+            amazing together.
           </p>
 
-          <form className="max-w-md mx-auto space-y-4 mb-16 text-left" onSubmit={handleSubmit}>
+          <form
+            className="max-w-md mx-auto space-y-4 mb-16 text-left"
+            onSubmit={handleSubmit}
+          >
             <div className="space-y-2">
-              <label htmlFor="name" className="text-sm text-gray-400 font-medium">Name</label>
+              <label
+                htmlFor="name"
+                className="text-sm text-gray-400 font-medium"
+              >
+                Name
+              </label>
               <input
                 type="text"
                 id="name"
@@ -82,7 +100,12 @@ export default function Contact() {
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm text-gray-400 font-medium">Email</label>
+              <label
+                htmlFor="email"
+                className="text-sm text-gray-400 font-medium"
+              >
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
@@ -94,7 +117,12 @@ export default function Contact() {
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="message" className="text-sm text-gray-400 font-medium">Message</label>
+              <label
+                htmlFor="message"
+                className="text-sm text-gray-400 font-medium"
+              >
+                Message
+              </label>
               <textarea
                 id="message"
                 rows={4}
@@ -128,21 +156,36 @@ export default function Contact() {
                   )}
                 </button>
                 {(status === "error" || errorMsg) && (
-                  <p className="text-red-400 text-sm text-center mt-2">{errorMsg}</p>
+                  <p className="text-red-400 text-sm text-center mt-2">
+                    {errorMsg}
+                  </p>
                 )}
               </>
             )}
           </form>
 
           <div className="flex flex-col items-center justify-center gap-6">
-            <a href="mailto:emailfortanishq@gmail.com" className="text-gray-400 hover:text-cyan-400 flex items-center gap-2 transition-colors">
+            <a
+              href="mailto:emailfortanishq@gmail.com"
+              className="text-gray-400 hover:text-cyan-400 flex items-center gap-2 transition-colors"
+            >
               <Mail className="w-5 h-5" /> emailfortanishq@gmail.com
             </a>
             <div className="flex gap-6">
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:border-cyan-500/50 transition-all hover:-translate-y-1">
+              <a
+                href="https://github.com/TanishQcode"
+                target="_blank"
+                rel="noreferrer"
+                className="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:border-cyan-500/50 transition-all hover:-translate-y-1"
+              >
                 <Github className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-500/50 transition-all hover:-translate-y-1">
+              <a
+                href="https://www.linkedin.com/in/tanishqbug/"
+                target="_blank"
+                rel="noreferrer"
+                className="w-12 h-12 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-500/50 transition-all hover:-translate-y-1"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
